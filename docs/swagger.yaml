@@ -1,0 +1,67 @@
+openapi: 3.0.3
+info:
+  version: 1.0.0
+  title: Http-File Server API
+  description: 
+servers:
+  - url: https://localhost:3000
+paths:
+  /file:
+    put:
+      description: upload file
+      consumes:
+        - multipart/form-data
+      parameters:
+        - in: formData
+          name: file
+          type: file
+          description: dynamic key
+      responses:
+        "200":
+          description: Successful operation 
+  /file/:filename:
+    get:
+      description: download file
+      parameters:
+        - in: path
+          name: filename
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: Successful operation 
+    delete:
+      description: delete file
+      parameters:
+        - in: path
+          name: filename
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: Successful operation
+  /file/list:
+    post:
+      description: list all files
+      responses:
+        "200":
+          description: Successful operation 
+  /file/:oldFile/:newFile:
+    patch:
+      description: rename file
+      parameters:
+        - in: query
+          name: oldFile
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: newFile
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: Successful operation 
