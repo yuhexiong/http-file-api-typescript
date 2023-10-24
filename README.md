@@ -9,14 +9,12 @@ npm install
 ## Build
 
 ```bash
-npm install -g typescript
 tsc
 ```
 
 ## Run
 
 ```bash
-npm install -g nodemon
 nodemon build/server.js
 ```
 
